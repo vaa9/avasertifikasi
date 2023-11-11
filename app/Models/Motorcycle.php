@@ -9,10 +9,12 @@ class Motorcycle extends Model
 {
     use HasFactory;
 
+    // PrimaryKey
     protected $primaryKey = 'MotorcycleID';
 
+    // Array Fillable
     protected $fillable = [
-        'Image', 'Model', 'Year', 'Price', 'PassengerCount', 
+        'Image', 'Model', 'Year', 'Price', 'PassengerCount',
         'Manufacturer', 'FuelCapacity', 'LuggageSize'
     ];
 }

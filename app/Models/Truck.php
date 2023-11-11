@@ -9,11 +9,12 @@ class Truck extends Model
 {
     use HasFactory;
 
+    // PrimaryKey
     protected $primaryKey = 'TruckID';
 
+    // Array Fillable
     protected $fillable = [
-        'Image', 'Model', 'Year', 'Price', 'PassengerCount', 
+        'Image', 'Model', 'Year', 'Price', 'PassengerCount',
         'Manufacturer', 'WheelCount', 'CargoAreaSize'
     ];
 }
-
