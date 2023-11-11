@@ -22,8 +22,12 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
+        // Upload image
+        $image = $request->file('image');
+        $image->storeAs('public/cars', $image->hashName());
+
         Car::create([
-            'Image' => $request->image,
+            'Image' => $image->hashName(),
             'Model' => $request->model,
             'Year' => $request->year,
             'Price' => $request->price,
@@ -46,11 +50,16 @@ class CarController extends Controller
     public function update(Request $request, $id)
     {
         $cars = Car::findOrFail($id);
-        $img = $request->file('image');
-        if ($img) {
-            Storage::delete($request->oldImage);
+      
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $image->storeAs('public/cars', $image->hashName());
+
+            Storage::delete('public/cars/' . $cars->image);
+
             $cars->update([
-                'Image' => $img->store('image'),
+                'Image' => $image->hashName(),
                 'Model' => $request->model,
                 'Year' => $request->year,
                 'Price' => $request->price,
@@ -78,6 +87,9 @@ class CarController extends Controller
     public function destroy($id)
     {
         $cars = Car::findOrFail($id);
+
+        Storage::delete('public/cars/' . $cars->image);
+
         $cars->delete();
 
         return redirect()->route('car.index')

@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="model">Model :</label>
-                    <input type="text" class="form-control" id="model" name="model" value="{{ $cars->Name }}" required>
+                    <input type="text" class="form-control" id="model" name="model" value="{{ $cars->Model }}" required>
                 </div>
                 <div class="form-group">
                     <label for="year">Year :</label>

@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group">
                     <label for="idcard">ID Card :</label>
-                    <input type="file" class="form-control" id="idcard" name="idcard" accept="/*" required>
+                    <input type="number" class="form-control" id="idcard" name="idcard" required>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary mb-5 me-1"><i class="fa-solid fa-check me-1"></i>Submit</button>

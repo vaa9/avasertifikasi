@@ -42,22 +42,13 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $customers = Customer::findOrFail($id);
-        $img = $request->file('image');
-        if ($img) {
-            Storage::delete($request->oldImage);
-            $customers->update([
-                'Name' => $request->name,
-                'Address' => $request->address,
-                'PhoneNumber' => $request->phonenumber,
-                'IDCard' => $img->store('idcard_image')
-            ]);
-        } else {
-            $customers->update([
-                'Name' => $request->name,
-                'Address' => $request->address,
-                'PhoneNumber' => $request->phonenumber
-            ]);
-        }
+       
+        $customers->update([
+            'Name' => $request->name,
+            'Address' => $request->address,
+            'PhoneNumber' => $request->phonenumber,
+            'IDCard' => $request->idcard
+        ]);
 
         return redirect()->route('customer.index')
             ->with('success', 'Customer updated successfully');
@@ -66,6 +57,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $customers = Customer::findOrFail($id);
+        
         $customers->delete();
 
         return redirect()->route('customer.index')

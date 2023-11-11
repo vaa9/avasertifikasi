@@ -22,8 +22,12 @@ class TruckController extends Controller
 
     public function store(Request $request)
     {
+        // Upload image
+        $image = $request->file('image');
+        $image->storeAs('public/trucks', $image->hashName());
+
         Truck::create([
-            'Image' => $request->image,
+            'Image' => $image->hashName(),
             'Model' => $request->model,
             'Year' => $request->year,
             'Price' => $request->price,
@@ -46,11 +50,16 @@ class TruckController extends Controller
     public function update(Request $request, $id)
     {
         $trucks = Truck::findOrFail($id);
-        $img = $request->file('image');
-        if ($img) {
-            Storage::delete($request->oldImage);
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $image->storeAs('public/trucks', $image->hashName());
+
+            Storage::delete('public/trucks/' . $trucks->image);
+
             $trucks->update([
-                'Image' => $img->store('image'),
+                'Image' => $image->hashName(),
                 'Model' => $request->model,
                 'Year' => $request->year,
                 'Price' => $request->price,
@@ -67,7 +76,7 @@ class TruckController extends Controller
                 'PassengerCount' => $request->passengercount,
                 'Manufacturer' => $request->manufacturer,
                 'WheelCount' => $request->wheelcount,
-                'CargoAreaSize' => $request->cargoareasize,
+                'CargoAreaSize' => $request->cargoareasize
             ]);
         }
 
@@ -78,6 +87,9 @@ class TruckController extends Controller
     public function destroy($id)
     {
         $trucks = Truck::findOrFail($id);
+
+        Storage::delete('public/trucks/' . $trucks->image);
+
         $trucks->delete();
 
         return redirect()->route('truck.index')

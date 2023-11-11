@@ -24,8 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="idcard">ID Card :</label>
-                    <input type="hidden" name="oldImage" value="{{ $customers->Image }}">
-                    <input type="file" class="form-control" id="idcard" name="idcard" required>
+                    <input type="number" class="form-control" id="idcard" name="idcard" value="{{ $customers->IDCard }}" required>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary mb-5 me-1"><i class="fa-solid fa-check me-1"></i>Submit</button>

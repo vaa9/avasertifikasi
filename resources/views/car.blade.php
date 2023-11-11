@@ -12,6 +12,10 @@
             <th> Model </th>
             <th> Year </th>
             <th> Price </th>
+            <th> Passenger Count </th>
+            <th> Manufacturer </th>
+            <th> Fuel Type</th>
+            <th> Luggage Size</th>
             <th> Action </th>
         </tr>
 
@@ -20,10 +24,14 @@
         @foreach ($cars as $car)
         <tr>
             <td>{{ $loop->index+1 }}</td>
-            <td><img src="{{asset('/storage/' .$car->Image)}}"></td>
+            <td><img src="{{ asset('storage/cars/' . $car->Image) }}" class="w-50 img-thumbnail img-fluid"></td>
             <td>{{ $car->Model }}</td>
             <td>{{ $car->Year }}</td>
             <td>{{ $car->Price }}</td>
+            <td>{{ $car->PassengerCount }}</td>
+            <td>{{ $car->Manufacturer }}</td>
+            <td>{{ $car->FuelType }}</td>
+            <td>{{ $car->LuggageSize }}</td>
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
                     <a href="{{ route('car.edit', $car->CarID) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-car fa-flash ms-1"></i></button></a>

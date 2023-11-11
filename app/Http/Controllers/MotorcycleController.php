@@ -22,8 +22,12 @@ class MotorcycleController extends Controller
 
     public function store(Request $request)
     {
+         // Upload image
+         $image = $request->file('image');
+         $image->storeAs('public/motorcycles', $image->hashName());
+
         Motorcycle::create([
-            'Image' => $request->image,
+            'Image' => $image->hashName(),
             'Model' => $request->model,
             'Year' => $request->year,
             'Price' => $request->price,
@@ -33,8 +37,8 @@ class MotorcycleController extends Controller
             'LuggageSize' => $request->luggagesize
         ]);
 
-        return redirect()->route('car.index')
-            ->with('success', 'Car created successfully');
+        return redirect()->route('motorcycle.index')
+            ->with('success', 'Motorcycle created successfully');
     }
 
     public function edit($id)
@@ -46,11 +50,16 @@ class MotorcycleController extends Controller
     public function update(Request $request, $id)
     {
         $motorcycles = Motorcycle::findOrFail($id);
-        $img = $request->file('image');
-        if ($img) {
-            Storage::delete($request->oldImage);
+
+        if ($request->hasFile('image')) {
+
+            $image = $request->file('image');
+            $image->storeAs('public/motorcycles', $image->hashName());
+
+            Storage::delete('public/motorcycles/' . $motorcycles->image);
+       
             $motorcycles->update([
-                'Image' => $img->store('image'),
+                'Image' => $image->hashName(),
                 'Model' => $request->model,
                 'Year' => $request->year,
                 'Price' => $request->price,
@@ -78,6 +87,9 @@ class MotorcycleController extends Controller
     public function destroy($id)
     {
         $motorcycles = Motorcycle::findOrFail($id);
+
+        Storage::delete('public/motorcycles/' . $motorcycles->image);
+
         $motorcycles->delete();
 
         return redirect()->route('motorcycle.index')

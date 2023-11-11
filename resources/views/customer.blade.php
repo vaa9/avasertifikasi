@@ -23,7 +23,7 @@
             <td>{{ $customer->Name }}</td>
             <td>{{ $customer->Address }}</td>
             <td>{{ $customer->PhoneNumber }}</td>
-            <td><img src="{{asset('/storage/' .$customer->IDCard)}}"></td>
+            <td>{{ $customer->IDCard }}</td>
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
                     <a href="{{ route('customer.edit', $customer->CustomerID) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a>
