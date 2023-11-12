@@ -25,7 +25,6 @@
             <td>{{ $order->OrderDate }}</td>
             <td>{{ $order->VehicleID }}</td>
             <td>{{ $order->Quantity }}</td>
-            <td>{{ $order->TotalAmount }}</td>
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
                     <a href="{{ route('order.edit', $order->OrderID) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-cart-shopping fa-flash ms-1"></i></button></a>

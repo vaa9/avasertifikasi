@@ -11,16 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
-            $table->id('CarID');
+        Schema::create('vehicles', function (Blueprint $table) {
+            $table->id('VehicleID');
+            $table->string('Type');
             $table->string('Image');
             $table->string('Model');
             $table->integer('Year');
-            $table->decimal('Price', 10, 2);
             $table->integer('PassengerCount');
             $table->string('Manufacturer');
+            $table->decimal('Price', 10, 2);
             $table->string('FuelType')->nullable();
+            $table->integer('TrunkArea')->nullable();
+            $table->integer('WheelCount')->nullable();
+            $table->integer('CargoAreaSize')->nullable();
             $table->integer('LuggageSize')->nullable();
+            $table->integer('FuelCapacity')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('vehicles');
     }
 };

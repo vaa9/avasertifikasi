@@ -8,13 +8,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav nav-pills mr-auto">
                 <li class="nav-item" style="margin:5px">
-                    <a class="nav-link {{ $active_car ?? '' }}" href="/">Car<i class="fa-solid fa-car fa-fade ms-1"></i></a>
-                </li>
-                <li class="nav-item" style="margin:5px">
-                    <a class="nav-link {{ $active_motorcycle ?? '' }}" href="/motorcycle">Motorcycle<i class="fa-solid fa-motorcycle fa-fade ms-1"></i></a>
-                </li>
-                <li class="nav-item" style="margin:5px">
-                    <a class="nav-link {{ $active_truck ?? '' }}" href="/truck">Truck<i class="fa-solid fa-truck fa-fade ms-1"></i></a>
+                    <a class="nav-link {{ $active_vehicle ?? '' }}" href="/">Vehicle<i class="fa-solid fa-car fa-fade ms-1"></i></a>
                 </li>
                 <li class="nav-item" style="margin:5px">
                     <a class="nav-link {{ $active_order ?? '' }}" href="/order">Order<i class="fa-solid fa-cart-shopping fa-fade ms-1"></i></a>
