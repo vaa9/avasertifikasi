@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Vehicle extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
-    // PrimaryKey
-    protected $primaryKey = 'VehicleID';
-
-    // Array Fillable
+    // Define Fillable
     protected $fillable = [
-        'Type', 'Image', 'Model', 'Year', 'PassengerCount', 
-        'Manufacturer', 'Price', 'FuelType', 'TrunkArea', 
+        'Type', 'Image', 'Model', 'Year', 'PassengerCount',
+        'Manufacturer', 'Price', 'FuelType', 'TrunkArea',
         'WheelCount', 'CargoAreaSize', 'LuggageSize', 'FuelCapacity'
     ];
+
+    // Define Relation
+    public function Order()
+    {
+        return $this->hasMany((Order::class));
+    }
 }

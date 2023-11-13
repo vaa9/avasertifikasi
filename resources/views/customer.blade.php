@@ -26,8 +26,8 @@
             <td>{{ $customer->IDCard }}</td>
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
-                    <a href="{{ route('customer.edit', $customer->CustomerID) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a>
-                    <form action="{{ route('customer.destroy', $customer->CustomerID) }}" method="post">
+                    <a href="{{ route('customer.edit', $customer->id) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a>
+                    <form action="{{ route('customer.destroy', $customer->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete<i class="fa-duotone fa-person fa-flash ms-1"></i></button>

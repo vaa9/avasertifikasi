@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Customer;
+use App\Models\Vehicle;
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -18,20 +20,19 @@ class OrderController extends Controller
     public function create()
     {
         $orders = Order::all();
+        $customers = Customer::all();
+        $vehicles = Vehicle::all();
 
         // Render view
-        return view('createorder', compact('orders'));
+        return view('createorder', compact(['orders', 'customers', 'vehicles']));
     }
 
     public function store(Request $request)
     {
         // Create order
         Order::create([
-            'CustomerID' => $request->customerid,
-            'OrderDate' => $request->orderdate,
-            'VehicleID' => $request->vehicleid,
-            'Quantity' => $request->quantity,
-            'TotalAmount' => $request->totalamount
+            'customer_id' => $request->customer_id,
+            'vehicle_id' => $request->vehicle_id
         ]);
 
         // Return redirect & show message
@@ -44,8 +45,11 @@ class OrderController extends Controller
         // Get order by id
         $orders = Order::findOrFail($id);
 
+        $customers = Customer::all();
+        $vehicles = Vehicle::all();
+
         // Render view
-        return view('editorder', compact('orders'));
+        return view('editorder', compact(['orders', 'customers', 'vehicles']));
     }
 
     public function update(Request $request, $id)
@@ -55,11 +59,8 @@ class OrderController extends Controller
 
         // Update order
         $orders->update([
-            'CustomerID' => $request->customerid,
-            'OrderDate' => $request->orderdate,
-            'VehicleID' => $request->vehicleid,
-            'Quantity' => $request->quantity,
-            'TotalAmount' => $request->totalamount
+            'customer_id' => $request->customer_id,
+            'vehicle_id' => $request->vehicle_id
         ]);
 
         // Return redirect & show message

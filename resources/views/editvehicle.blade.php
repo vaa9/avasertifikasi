@@ -7,7 +7,7 @@
 <div class="container text-light">
     <div class="row">
         <div class="col">
-            <form action=" {{ route('vehicle.update', $vehicles->VehicleID) }}" method="post" enctype="multipart/form-data">
+            <form action=" {{ route('vehicle.update', $vehicles->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="form-group">

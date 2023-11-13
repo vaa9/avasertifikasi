@@ -9,7 +9,17 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'OrderID';
+    protected $guarded = ['id'];
 
-    protected $fillable = ['CustomerID', 'OrderDate', 'VehicleID', 'Quantity', 'TotalAmount'];
+    // Define Relation
+    public function Customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    // Define Relation
+    public function Vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
 }

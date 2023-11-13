@@ -7,7 +7,7 @@
 <div class="container text-light">
     <div class="row">
         <div class="col">
-            <form action="{{ route('customer.update', $customers->CustomerID) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('customer.update', $customers->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="form-group">

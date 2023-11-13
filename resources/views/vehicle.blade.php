@@ -32,8 +32,8 @@
             <td>{{ 'Rp' . $vehicle->Price }}</td>
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
-                    <a href="{{ route('vehicle.edit', $vehicle->VehicleID) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-car fa-flash ms-1"></i></button></a>
-                    <form action="{{ route('vehicle.destroy', $vehicle->VehicleID) }}" method="post">
+                    <a href="{{ route('vehicle.edit', $vehicle->id) }}"><button type="button" class="btn btn-warning me-md-2">Edit<i class="fa-duotone fa-car fa-flash ms-1"></i></button></a>
+                    <form action="{{ route('vehicle.destroy', $vehicle->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete<i class="fa-duotone fa-car fa-flash ms-1"></i></button>

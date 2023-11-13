@@ -10,24 +10,22 @@
             <form action="{{ route('order.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="customerid">Customer ID :</label>
-                    <input type="number" class="form-control" id="customerid" name="customerid" required>
+                    <label for="customer_id" class="form-label">Customer :</label>
+                    <select name="customer_id" id="customer_id" class="form-select">
+                        <option value="" selected disabled>Select Customer</option>
+                        @foreach ($customers as $customer)
+                            <option value="{{ $customer->id }}">{{ $customer->Name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="orderdate">Order Date :</label>
-                    <input type="date" class="form-control" id="orderdate" name="orderdate" required>
-                </div>
-                <div class="form-group">
-                    <label for="vehicleid">Vehicle ID :</label>
-                    <input type="number" class="form-control" id="vehicleid" name="vehicleid" required>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">Quantity :</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" required>
-                </div>
-                <div class="form-group">
-                    <label for="totalamount">Total Amount :</label>
-                    <input type="number" class="form-control" id="totalamount" name="totalamount" required>
+                    <label for="vehicle_id">Vehicle Type :</label>
+                    <select name="vehicle_id" id="vehicle_id" class="form-select">
+                    <option value="" selected disabled>Select Vehicle Type</option>
+                        @foreach ($vehicles as $vehicle)
+                            <option value="{{ $vehicle->id }}">{{ $vehicle->Type }} - {{ $vehicle->Model }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary mb-5 me-1"><i class="fa-solid fa-check me-1"></i>Submit</button>

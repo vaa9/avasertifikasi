@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->id('VehicleID');
+            $table->id();
             $table->string('Type');
             $table->string('Image');
             $table->string('Model');
             $table->integer('Year');
             $table->integer('PassengerCount');
             $table->string('Manufacturer');
-            $table->decimal('Price', 10, 2);
+            $table->string('Price');
             $table->string('FuelType')->nullable();
             $table->integer('TrunkArea')->nullable();
             $table->integer('WheelCount')->nullable();

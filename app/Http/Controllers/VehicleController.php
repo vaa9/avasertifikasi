@@ -57,7 +57,6 @@ class VehicleController extends Controller
     {
         // Get vehicle by id
         $vehicles = Vehicle::findOrFail($id);
-
         // Render view
         return view('editvehicle', compact('vehicles'));
     }

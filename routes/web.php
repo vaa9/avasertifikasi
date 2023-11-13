@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Customer;
+use App\Models\Vehicle;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VehicleController;
@@ -16,15 +18,46 @@ use App\Http\Controllers\VehicleController;
 |
 */
 
-Route::get('/', [VehicleController::class,'index']);
-Route::get('/createvehicle', [VehicleController::class]);
-Route::get('/editvehicle', [VehicleController::class]);
-Route::get('/order', [OrderController::class]);
-Route::get('/createorder', [OrderController::class]);
-Route::get('/editorder', [OrderController::class]);
-Route::get('/customer', [CustomerController::class]);
-Route::get('/createcustomer', [CustomerController::class]);
-Route::get('/editcustomer', [CustomerController::class]);
+Route::get('/', [VehicleController::class, 'index']);
+
+Route::get('/vehicle', function () {
+    return view('vehicle');
+});
+
+Route::get('/createvehicle', function () {
+    return view('createvehicle');
+});
+
+Route::get('/editvehicle', function () {
+    return view('editvehicle');
+});
+
+Route::get('/order', function () {
+    return view('order');
+});
+
+Route::get('/createorder', function () {
+    return view('createorder', [
+        'customers' => Customer::all(),
+        'vehicles' => Vehicle::all(),
+    ]);
+});
+
+Route::get('/editorder', function () {
+    return view('editorder');
+});
+
+Route::get('/customer', function () {
+    return view('customer');
+});
+
+Route::get('/createcustomer', function () {
+    return view('createcustomer');
+});
+
+Route::get('/editcustomer', function () {
+    return view('editcustomer');
+});
 
 Route::resource('customer', CustomerController::class);
 Route::resource('order', OrderController::class);

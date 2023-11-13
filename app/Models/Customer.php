@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     use HasFactory;
+    
+    protected $guarded = ['id'];
 
-    // PrimaryKey
-    protected $primaryKey = 'CustomerID';
-
-    // Array Fillable
+    // Define Fillable
     protected $fillable = ['Name', 'Address', 'PhoneNumber', 'IDCard'];
+
+    // Define Relation
+    public function Order()
+    {
+        return $this->hasMany((Order::class));
+    }
 }
