@@ -9,6 +9,7 @@ class PeminjamController extends Controller
 {
     public function index()
     {
+        //memanggil seluruh tabel peminjam
         $peminjam = peminjam::all();
 
         // Render view 
@@ -17,6 +18,7 @@ class PeminjamController extends Controller
 
     public function create()
     {
+        //memanggil seluruh tabel peminjam
         $peminjam = peminjam::all();
 
         // Render view
@@ -25,19 +27,19 @@ class PeminjamController extends Controller
 
     public function store(Request $request)
     {
-        // Create customer
+        // Create peminjam
         $peminjam = peminjam::create([
             'nama_peminjam' => $request->nama_peminjam,
             'telpon_peminjam' => $request->telpon_peminjam
         ]);
 
-        // Return redirect & show message
+        // Return redirect 
         return redirect()->route('peminjam.index')
             ->with('success', 'Peminjam created successfully');
     }
     public function destroy($id_peminjam)
     {
-        // Get order by id 
+        // mengambil data peminjam berdasarkan id
         $peminjam = peminjam::findOrFail($id_peminjam);
 
         // Delete order

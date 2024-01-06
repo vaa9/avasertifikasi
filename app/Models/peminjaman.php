@@ -14,7 +14,7 @@ class peminjaman extends Model
     protected $guarded = ['id_peminjaman'];
 
     // Define Fillable
-    // protected $fillable = ['id_peminjam','id_buku','tanggal_peminjaman', 'tanggal_pengembalian_buku','status_peminjaman'];
+    
     protected $primaryKey = 'id_peminjaman';
 
     protected $casts = [

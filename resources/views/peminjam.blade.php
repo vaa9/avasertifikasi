@@ -14,9 +14,9 @@
             <th> Action </th>
 
         </tr>
-
+<!-- mengalihkan ke page untuk create peminjam-->
         <div class="container"><a href="{{ route('peminjam.create') }}"><button type="submit" class="btn btn-primary mb-2">Create<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a> </div>
-
+<!-- memanggil satu persatu array yang di dapat dari pemanggilan route peminjam.index -->
         @foreach ($peminjam as $peminjam)
         <tr>
             <td>{{ $loop->index+1 }}</td>

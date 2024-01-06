@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class buku extends Model
 {
     use HasFactory;
-    
+    //memastikan yang dapat diakses adalah buku
     protected $guarded = ['id_buku'];
 
+    //memastikan status_buku adalah boolean
     protected $casts = [
         'status_buku' => 'bool'
     ];
-
+    //memastikan primarykey selalu id_buku
     protected $primaryKey = 'id_buku';
 
     // Define Relation

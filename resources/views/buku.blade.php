@@ -17,9 +17,9 @@
             <th> Foto Buku </th>
             <th> Status Buku </th>
         </tr>
-
+<!-- mengalihkan ke page untuk create buku -->
         <div class="container"><a href="{{ route('buku.create') }}"><button type="submit" class="btn btn-primary mb-2">Create<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a> </div>
-
+<!-- memanggil satu persatu array yang di dapat dari pemanggilan route buku.index -->
         @foreach ($buku as $buku)
         <tr>
             <td>{{ $loop->index+1 }}</td>

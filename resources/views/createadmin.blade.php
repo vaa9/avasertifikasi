@@ -7,6 +7,7 @@
 <div class="container text-dark">
     <div class="row">
         <div class="col">
+            <!-- membuat form yang ter route dengan admin store untuk input admin -->
             <form action="{{ route('admin.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

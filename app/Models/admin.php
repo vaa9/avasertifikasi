@@ -9,6 +9,7 @@ class admin extends Model
 {
     use HasFactory;
     
+    //memastikan yang keluar di query selalu id_admin
     protected $guarded = ['id_admin'];
 
     // Define Fillable

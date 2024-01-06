@@ -7,6 +7,7 @@
 <div class="container text-dark">
     <div class="row">
         <div class="col">
+            <!-- membuat form yang ter route dengan buku store untuk input buku -->
             <form action="{{ route('buku.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

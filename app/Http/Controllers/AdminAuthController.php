@@ -17,24 +17,25 @@ class AdminAuthController extends Controller
 
     public function adminAuthenticate(Request $request)
     {
-        
+        //mengambil nama admin dan pass admin dari view
         $nama_admin = $request->nama_admin;
         $pass_admin = $request->pass_admin;
-
+        //memanggil model untuk di panggil functionnya
         $model =  new login;
+        //menggunakan function untuk mengecek ada atau tidaknya admin dan passnya
         $cekloginAdmin = $model->isExistAdmin ($nama_admin, $pass_admin);
+        //mengecek hasil dari function
         if ($cekloginAdmin == true){
-            //1/2.a. Jika KETEMU, maka session LOGIN dibuat(session untuk menyimpan data pada device)
-            //flush untuk reset session(dihapus semua)
+            //jika hasilnya ketemu/true maka akan dimasukkan ke session dan di direct ke katalog
+            //flush untuk reset session
             Session::flush();
-            //menyimpan session baru
+            
             Session::put ('nama_admin', $nama_admin); 
             Session::put ('pass_admin', $pass_admin);
-            //untuk menampilkan pesan smentara
             Session::flash('success', 'Login Success!');
             return redirect ('/buku');
         }else{
-            
+            //jika tidak maka akan kembali ke login
             return redirect('/');
             }
         

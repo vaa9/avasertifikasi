@@ -9,35 +9,25 @@ class BookController extends Controller
 {
     public function index()
     {
+        //memanggil semua isi dari tabel buku
         $buku = buku::all();
 
         // Render view 
         return view('buku', compact('buku'));
     }
-    public function search(Request $request)
-    {
-        $judul = $request->input('judul');
-
-        // Lakukan query pencarian berdasarkan judul
-        $buku = buku::where('nama_buku', 'LIKE', "%$judul%")->get();
-
-        return view('buku.index', compact('buku'));
-    }
     public function create()
     {
+        //memanggil semua isi dari tabel buku
         $buku = buku::all();
 
-        // Render view
+        // Render view dan mengarahkan ke createbook
         return view('createbook', compact('buku'));
     }
 
     public function store(Request $request)
     {
-        // $imageName = time().'.'.$request->cover->extension();
-        // $request->cover->storeAs('public/images', $imageName);
-        // Create customer
-        // $image = $request->file('image');
-        // $image->storeAs('public/vehicles', $image->hashName());
+        
+        //memasukkan data kedalam tabel buku
         $buku = buku::create([
             'nama_buku' => $request->nama_buku,
             'penulis_buku' => $request->penulis_buku,
@@ -47,7 +37,7 @@ class BookController extends Controller
         ]);
         
 
-        // Return redirect & show message
+        // Return redirect & beri pesan tanda
         return redirect()->route('buku.index')
             ->with('success', 'Book created successfully');
     }

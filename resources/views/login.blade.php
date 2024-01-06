@@ -9,14 +9,14 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">Admin Login</div>
-
+<!-- memastikan session login tidak error -->
                     <div class="card-body">
                         @if(session('loginError'))
                             <div class="alert alert-danger" role="alert">
                                 {{ session('loginError') }}
                             </div>
                         @endif
-
+<!--membuat form untuk login dan meroute ke admin.login -->
                         <form method="POST" action="{{ route('admin.login') }}">
                             @csrf
 

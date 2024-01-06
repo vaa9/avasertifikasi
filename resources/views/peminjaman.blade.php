@@ -21,7 +21,7 @@
         </tr>
 
         <div class="container"><a href="{{ URL('/createpeminjaman')}}"><button type="submit" class="btn btn-primary mb-2">Create<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a> </div>
-
+<!-- memanggil satu persatu array yang di dapat dari pemanggilan route pemijaman.index -->
         @foreach ($peminjaman as $peminjaman)
         
         <tr>
@@ -37,6 +37,7 @@
                 <span>dipinjam</span>
                 @endif
             </td>
+            <!-- membuat aksi yaitu penegmbalian dengan form dan buttonsubmit serta menggunakan method put -->
             <td class="text-center">
                 <div class="d-grid d-md-flex justify-content-center">
                     <form action="{{ route('peminjaman.update', $peminjaman->id_peminjaman) }}" method="post">
