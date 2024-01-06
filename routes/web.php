@@ -1,12 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Customer;
-use App\Models\Vehicle;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\VehicleController;
-
+use App\Models\admin;
+use App\Models\buku;
+use App\Models\peminjam;
+use App\Models\peminjaman;
+use App\Models\login;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\PeminjamController;
+use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\AdminAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,47 +22,55 @@ use App\Http\Controllers\VehicleController;
 |
 */
 
-Route::get('/', [VehicleController::class, 'index']);
-
-Route::get('/vehicle', function () {
-    return view('vehicle');
+Route::get('/', function () {
+    return view('login');
 });
 
-Route::get('/createvehicle', function () {
-    return view('createvehicle');
+Route::get('/admin', function () {
+    return view('admin');
 });
 
-Route::get('/editvehicle', function () {
-    return view('editvehicle');
-});
-
-Route::get('/order', function () {
-    return view('order');
-});
-
-Route::get('/createorder', function () {
-    return view('createorder', [
-        'customers' => Customer::all(),
-        'vehicles' => Vehicle::all(),
-    ]);
-});
-
-Route::get('/editorder', function () {
-    return view('editorder');
-});
-
-Route::get('/customer', function () {
-    return view('customer');
-});
-
-Route::get('/createcustomer', function () {
-    return view('createcustomer');
+Route::get('/createadmin', function () {
+    return view('createadmin');
 });
 
 Route::get('/editcustomer', function () {
     return view('editcustomer');
 });
+Route::get('/createbook', function () {
+    return view('createbook');
+});
+Route::get('/createpeminjam', function () {
+    return view('createpeminjam');
+});
+Route::get('/createpeminjaman', function () {
+    return view('createpeminjaman')->with([
+        'hasilModel' => App\Models\peminjam::all(),
+        'bukus' => App\Models\buku::all()
+    ]);
+});
+Route::get('/editpeminjaman', function () {
+    return view('editpeminjaman')->with([
+        'hasilModel' => App\Models\peminjam::all(),
+        'bukus' => App\Models\buku::all()
+    ]);
+});
+Route::get('/peminjam', function () {
+    return view('peminjam');
+});
+Route::get('/buku', function () {
+    return view('buku');
+});
+Route::get('/peminjaman', function () {
+    return view('peminjaman');
+});
+Route::resource('buku', BookController::class);
+Route::resource('peminjam', PeminjamController::class);
+Route::resource('admin', AdminController::class);
+Route::resource('peminjaman', PeminjamanController::class);
+Route::put('/peminjaman/{id_peminjaman}', 'PeminjamanController@update')->name('peminjaman.update');
+// web.php
 
-Route::resource('customer', CustomerController::class);
-Route::resource('order', OrderController::class);
-Route::resource('vehicle', VehicleController::class);
+Route::get('/', [AdminAuthController::class, 'showLoginForm'])->name('admin.login.form');
+Route::post('/', [AdminAuthController::class, 'adminAuthenticate'])->name('admin.login');
+

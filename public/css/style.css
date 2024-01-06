@@ -1,5 +1,5 @@
 .neonText {
-    font-size: 3rem;
+    font-size: 5rem;
     animation: flicker 1.5s infinite alternate;
     color: #fff;
     text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #5271ff,
@@ -36,7 +36,7 @@
 }
 
 body {
-    background: url(/image/bg2.jpg) fixed center no-repeat;
+    background: url(/image/bg2.jpeg) fixed center no-repeat;
     background-size: cover;
     font-family: "Exo 2", sans-serif;
 }

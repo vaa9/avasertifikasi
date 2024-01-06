@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class admin extends Model
+{
+    use HasFactory;
+    
+    protected $guarded = ['id_admin'];
+
+    // Define Fillable
+    protected $fillable = ['nama_admin', 'pass_admin', 'lupapass_admin'];
+
+    // Define Relation
+    public function peminjaman()
+    {
+        return $this->hasMany((peminjaman::class));
+    }
+}
