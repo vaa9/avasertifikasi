@@ -16,6 +16,7 @@
             <th> Sinopsis Buku </th>
             <th> Foto Buku </th>
             <th> Status Buku </th>
+            <th> Action </th>
         </tr>
 <!-- mengalihkan ke page untuk create buku -->
         <div class="container"><a href="{{ route('buku.create') }}"><button type="submit" class="btn btn-primary mb-2">Create<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a> </div>
@@ -34,6 +35,14 @@
                 <span>Tersedia</span>
                 @endif
             </td>
+            <td class="text-center">
+                <div class="d-grid d-md-flex justify-content-center">
+                    <form action="{{ route('buku.destroy', $buku->id_buku) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" >Delete</button>
+                    </form>
+                </div>
         </tr>
         @endforeach
     </table>

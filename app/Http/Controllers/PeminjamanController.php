@@ -71,7 +71,8 @@ class PeminjamanController extends Controller
          if($peminjaman->status_peminjaman === false){
             //jika benar maka akan diupdate menjadi true karena sudah dikembalikan
             $peminjaman->update([
-                'status_peminjaman' => true
+                'status_peminjaman' => true,
+                'tanggal_pengembalian_buku' => now()
             ]);
             //mencari row yang sesuai dengan id buku yang direquest
             $buku = Buku::find($peminjaman->id_buku);

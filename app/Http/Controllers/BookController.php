@@ -41,5 +41,18 @@ class BookController extends Controller
         return redirect()->route('buku.index')
             ->with('success', 'Book created successfully');
     }
+    public function destroy($id_buku)
+    {
+        // mengambil data buku berdasarkan id
+        $buku = buku::findOrFail($id_buku);
+
+        // Delete 
+        $buku->delete();
+
+        // Return redirect & show message
+        return redirect()->route('buku.index')
+            ->with('success', 'buku deleted successfully');
+    }
 }
+
 

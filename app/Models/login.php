@@ -9,6 +9,7 @@ use DB;
 class Login extends Model
 {
     use HasFactory;
+    protected $guarded = ['id_admin'];
     //membuat fungsi untuk mencari nama dan pass admin
     public function isExistAdmin($nama_admin, $pass_admin){
         //query untuk mencari dari databse tentang admin 
