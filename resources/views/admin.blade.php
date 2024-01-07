@@ -11,6 +11,7 @@
         <tr>
             <th> No </th>
             <th> Nama Admin </th>
+            <th> Action </th>
         </tr>
 <!-- mengalihkan ke page untuk create admin -->
         <div class="container"><a href="{{ route('admin.create') }}"><button type="submit" class="btn btn-primary mb-2">Create<i class="fa-duotone fa-person fa-flash ms-1"></i></button></a> </div>
@@ -19,6 +20,14 @@
         <tr>
             <td>{{ $loop->index+1 }}</td>
             <td>{{ $admin->nama_admin }}</td>
+            <td class="text-center">
+                <div class="d-grid d-md-flex justify-content-center">
+                    <form action="{{ route('admin.destroy', $admin->id_admin) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" >Delete</button>
+                    </form>
+                </div>
         </tr>
         @endforeach
     </table>

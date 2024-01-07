@@ -36,5 +36,17 @@ class AdminController extends Controller
         return redirect()->route('admin.index')
             ->with('success', 'Customer created successfully');
     }
+    public function destroy($id_admin)
+    {
+        // mengambil data peminjam berdasarkan id
+        $admins = admin::findOrFail($id_admin);
+
+        // Delete 
+        $admins->delete();
+
+        // Return redirect & show message
+        return redirect()->route('admin.index')
+            ->with('success', 'admin deleted successfully');
+    }
 }
 

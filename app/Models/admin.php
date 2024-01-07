@@ -11,7 +11,8 @@ class admin extends Model
     
     //memastikan yang keluar di query selalu id_admin
     protected $guarded = ['id_admin'];
-
+    //memastikan primarykey selalu id_admin
+    protected $primaryKey = 'id_admin';
     // Define Fillable
     protected $fillable = ['nama_admin', 'pass_admin', 'lupapass_admin'];
 
